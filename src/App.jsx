@@ -3,13 +3,17 @@ import "./styles.css";
 
 function App() {
   const maxLimit = 200;
+
   const [text, setText] = useState("");
 
+  // Character count
   const charCount = text.length;
 
+  // Word count
   const wordCount =
     text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
 
+  // Remaining characters
   const remaining = maxLimit - charCount;
 
   return (
@@ -21,12 +25,24 @@ function App() {
           placeholder="Start typing your text here..."
           value={text}
           onChange={(e) => setText(e.target.value)}
-        ></textarea>
+        />
 
+        {/* Counter Section */}
         <div className="counter-box">
-          <p>Characters: {charCount}</p>
-          <p>Words: {wordCount}</p>
-          <p>Remaining: {remaining}</p>
+          <div className="counter-item">
+            <h3>{charCount}</h3>
+            <p>Characters</p>
+          </div>
+
+          <div className="counter-item">
+            <h3>{wordCount}</h3>
+            <p>Words</p>
+          </div>
+
+          <div className="counter-item">
+            <h3>{remaining}</h3>
+            <p>Remaining</p>
+          </div>
         </div>
 
         {charCount > maxLimit && (
